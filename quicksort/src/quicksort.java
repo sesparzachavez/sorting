@@ -2,12 +2,8 @@ import java.util.Arrays;
 
 public class quicksort {
 
-    //private static int[] arr;
-
-
     public static void main(String args[]){
        int[] arr;
-        System.out.println("Hello world!");
         arr = new int[]{10,16,8,12,15,6,3,9,5};
         int low = 0;
         int high = arr.length-1;
@@ -18,11 +14,10 @@ public class quicksort {
 
     }
 
-
     public static void quicksort(int [] arr, int low, int high){
         if(low < high){
             int j = partition(arr, low,high);
-            quicksort(arr,low, j);
+            quicksort(arr,low, j-1);
             quicksort(arr, j+1, high);
         }
     }
@@ -32,24 +27,25 @@ public class quicksort {
         int i = low+1;
         int j = high;
 
-        while(i<j){
-            while((arr[i] <= pivot) && (i <= high)){
+        while(i<=j){
+            while((i <= high) && (arr[i] <= pivot)){
                 i++;
             }
-            while(arr[j] > pivot && j >= low){
+            while(j > low && arr[j] > pivot ){
                 j--;
             }
-
-           // swap(arr[i], arr[j]);
+            if(i>=j)
+                break;
+           swap(arr, i, j);
         }
-        swap(arr[low], arr[j]);
+        swap(arr,low, j);
 
         return j;
     }
 
-    public static void swap(int i, int j ){
-        int temp = i;
-        i = j;
-        j = temp;
+    public static void swap(int[] arr, int i, int j ){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
