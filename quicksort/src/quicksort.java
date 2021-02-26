@@ -1,40 +1,46 @@
+import java.util.Arrays;
+
 public class quicksort {
 
     //private static int[] arr;
-    public static int[] arr;
+
 
     public static void main(String args[]){
+       int[] arr;
         System.out.println("Hello world!");
         arr = new int[]{10,16,8,12,15,6,3,9,5};
-        int low = arr[0];
-        int high = arr[arr.length-1];
-        System.out.println(quicksort(low,high);
+        int low = 0;
+        int high = arr.length-1;
+
+        quicksort(arr, low,high);
+
+        System.out.println(Arrays.toString(arr));
 
     }
 
 
-    public static void quicksort(int low, int high){
+    public static void quicksort(int [] arr, int low, int high){
         if(low < high){
-            int j = partition(low,high);
-            quicksort(low, j);
-            quicksort(j+1, high);
+            int j = partition(arr, low,high);
+            quicksort(arr,low, j);
+            quicksort(arr, j+1, high);
         }
     }
 
-    public static int partition(int low, int high){
-        int i = low;
+    public static int partition(int[] arr, int low, int high){
+        int pivot = arr[low];
+        int i = low+1;
         int j = high;
 
-        int pivot = arr[low];
-
         while(i<j){
-            while(i <= pivot){
+            while((arr[i] <= pivot) && (i <= high)){
                 i++;
             }
-            while(j > pivot){
+            while(arr[j] > pivot && j >= low){
                 j--;
             }
-            swap(arr[i], arr[j]);
+
+           // swap(arr[i], arr[j]);
         }
         swap(arr[low], arr[j]);
 
