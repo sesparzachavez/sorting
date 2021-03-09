@@ -43,9 +43,9 @@ public class quicksort {
         return j;
     }
 
-    public static void swap(int[] arr, int i, int j ){
-        int temp = arr[i];
-        arr[i] = arr[j];
+    public static void swap(int[] arr, int i, int j ){ // i = 10 j = 20
+        int temp = arr[i]; // temp = 10
+        arr[i] = arr[j]; // i
         arr[j] = temp;
     }
 }
